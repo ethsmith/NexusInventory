@@ -29,7 +29,7 @@ MCStats (metrics): <br />
 
 If you want to build NexusInventory yourself, you will need Maven.
 
-1) Clone the SeparateWorldItems project: ```git clone https://github.com/ExtendedAlpha/NexusInventory.git```
+1) Clone the NexusInventory project: ```git clone https://github.com/ExtendedAlpha/NexusInventory.git```
 
 2) Run ```mvn clean install```
 
