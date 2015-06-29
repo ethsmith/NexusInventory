@@ -23,12 +23,12 @@
     
     <ciManagement>
         <system>jenkins</system>
-        <url>http://ci.md-5.net/job/SeparateWorldItems/</url>
+        <url>http://ci.md-5.net/job/NexusInventory/</url>
     </ciManagement>
     
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/ExtendedAlpha/SeparateWorldItems/issues</url>
+        <url>https://github.com/ExtendedAlpha/NexusInventory/issues</url>
     </issueManagement>
     
     <distributionManagement>
