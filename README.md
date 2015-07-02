@@ -1,9 +1,9 @@
 <hr>
 <img alt="" src="https://raw.githubusercontent.com/ExileDev/Logos/master/NexusInventory%20Logo.png" style="width: 900px; height: 225px;" />
 
-NexusInventory Is a multiworld inventory plugin for CraftBukkit and Spigot that supports UUID.<br />
-It's a good replacement for the outdated <a href="http://dev.bukkit.org/bukkit-plugins/multiverse-inventories/" target="_blank">Multiverse-Inventories</a> plugin.<br />
-This is a fork form the well know plugin SeparateWorldItems and <a href="https://github.com/Gnat008/PerWorldInventory" target="_blank">PerWorldInventory</a>
+>NexusInventory Is a multiworld inventory plugin for CraftBukkit and Spigot that supports UUID.<br />
+>It's a good replacement for the outdated <a href="http://dev.bukkit.org/bukkit-plugins/multiverse-inventories/" target="_blank">Multiverse-Inventories</a> plugin.<br />
+>This is a fork form the well know plugin SeparateWorldItems and <a href="https://github.com/Gnat008/PerWorldInventory" target="_blank">PerWorldInventory</a>
 <hr>
 
 ## Installation and Usage
