@@ -113,7 +113,7 @@ public class NexusInventory extends JavaPlugin {
                 Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "You are running " + getDescription().getVersion());
                 Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + " ");
                 Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Download at:");
-                Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "SpigotMC: Link");
+                Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "SpigotMC: https://goo.gl/W7b4yK");
                 Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GRAY + "---------------------------------");
             }
         }

@@ -31,7 +31,7 @@ import java.util.regex.Pattern;
 public class SpigotUpdater
 {
     private NexusInventory plugin;
-    final int resource = 0000;
+    final int resource = 8954;
     private static String latestVersion = "";
     private static boolean updateAvailable = false;
 
@@ -47,7 +47,7 @@ public class SpigotUpdater
             HttpURLConnection var1 = (HttpURLConnection)new URL("http://www.spigotmc.org/api/general.php").openConnection();
             var1.setDoOutput(true);
             var1.setRequestMethod("POST");
-            var1.getOutputStream().write("key=98BE0FE67F88AB82B4C197FAF1DC3B69206EFDCC4D3B80FC83A00037510B99B4&resource=2568".getBytes("UTF-8"));
+            var1.getOutputStream().write("key=98BE0FE67F88AB82B4C197FAF1DC3B69206EFDCC4D3B80FC83A00037510B99B4&resource=8954".getBytes("UTF-8"));
             String var2 = new BufferedReader(new InputStreamReader(var1.getInputStream())).readLine();
             if (var2.length() <= 7) {
                 return var2;
