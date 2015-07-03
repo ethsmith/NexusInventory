@@ -53,7 +53,7 @@
         </repository>
         <repository>
             <id>multiinv</id>
-            <url>https://github.com/ExileDev/Nexus-Repository/raw/master/uk/co/tggl/pluckerpluck/multiinv/3.3.5-SNAPSHOT/MultiInv-3.3.5.jar?raw=true</url>
+            <url>https://jitpack.io</url>
         </repository>
         <repository>
             <id>vault-repo</id>
@@ -85,10 +85,9 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>uk.co</groupId>
+            <groupId>com.github.Pluckerpluck</groupId>
             <artifactId>MultiInv</artifactId>
-            <version>3.3.5</version>
-            <type>jar</type>
+            <version>be772f4c88</version>
         </dependency>
     </dependencies>
 
