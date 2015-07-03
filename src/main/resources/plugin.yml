@@ -1,0 +1,30 @@
+main: ${project.groupId}.${project.artifactId}
+version: ${project.version}
+name: ${project.name}
+authors: [ExileDev, Gnat008, ExtendedAlpha]
+softdepend: [Multiverse-Core, Multiworld, Multiverse-Inventories, Vault]
+
+commands:
+  nexusinv:
+    description: Commands for NexusInventory
+    aliases: [nexusinventory]
+    
+permissions:
+  nexusinventory.bypass:
+    default: op
+    children:
+      nexusinventory.convert: true
+      nexusinventory.reload: true
+      nexusinventory.setdefaults: true
+      nexusinventory.help: true
+      nexusinventory.info: true
+  nexusinventory.convert:
+    default: false
+  nexusinventory.reload:
+    default: false
+  nexusinventory.setdefaults:
+    default: false
+  nexusinventory.help:
+    default: false
+  nexusinventory.info:
+    default: false
