@@ -21,6 +21,6 @@ package org.ExtendedAlpha.Nexus;
 public class DefaultVals {
 
     public static String pluginName = "NexusInventory";
-    public static String pluginVersion = "v3.1.0-SNAPSHOT";
+    public static String pluginVersion = "v3.1.0";
 
 }

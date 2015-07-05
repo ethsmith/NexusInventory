@@ -164,6 +164,7 @@ public class NexusCommand implements CommandExecutor {
                         }
                         plugin.dreport.createReport(sender, customdata);
                     }
+                    sender.sendMessage(ChatColor.RED + "In order to generate a debug report you need the plugin DebugReport!");
                 }
 
                 return true;

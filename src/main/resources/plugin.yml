@@ -18,6 +18,7 @@ permissions:
       nexusinventory.setdefaults: true
       nexusinventory.help: true
       nexusinventory.info: true
+      nexusinventory.debug: true
   nexusinventory.convert:
     default: false
   nexusinventory.reload:
@@ -27,4 +28,6 @@ permissions:
   nexusinventory.help:
     default: false
   nexusinventory.info:
+    default: false
+  nexusinventory.debug:
     default: false
