@@ -37,6 +37,7 @@ import org.ExtendedAlpha.Nexus.Utils.PlayerMessenger;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import com.tux2mc.debugreport.DebugReport;
 
 import java.io.*;
 
@@ -49,6 +50,8 @@ public class NexusInventory extends JavaPlugin {
     private SpigotUpdater updater;
     // Initialize instance
     private static NexusInventory instance = null;
+    // Initialize debugreport
+    public DebugReport dreport = null;
 
     @Override
     public void onEnable() {
@@ -95,6 +98,13 @@ public class NexusInventory extends JavaPlugin {
                 log.warning("Unable to hook into Vault!");
             }
         }
+
+        if (getServer().getPluginManager().getPlugin("DebugReport") != null) {
+            log.info("DebugReport found! Hooking into it...");
+            dreport = DebugReport.getInstance();
+            } else {
+                log.warning("Unable to hook into DebugReport!");
+            }
 
         {
 

@@ -2,7 +2,7 @@ main: ${project.groupId}.${project.artifactId}
 version: ${project.version}
 name: ${project.name}
 authors: [ExileDev, Gnat008, ExtendedAlpha]
-softdepend: [Multiverse-Core, Multiworld, Multiverse-Inventories, Vault]
+softdepend: [Multiverse-Core, Multiworld, Multiverse-Inventories, Vault, DebugReport]
 
 commands:
   nexusinv:

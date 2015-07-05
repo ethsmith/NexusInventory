@@ -30,12 +30,12 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.util.LinkedList;
 
 public class NexusCommand implements CommandExecutor {
 
-    private enum Commands {CONVERT, HELP, RELOAD, SETWORLDDEFAULT, INFO}
+    private enum Commands {CONVERT, HELP, RELOAD, SETWORLDDEFAULT, INFO, DEBUG}
 
     private NexusInventory plugin;
 
@@ -109,6 +109,60 @@ public class NexusCommand implements CommandExecutor {
                         }
                     } else {
                         NexusInventory.log.warning("You must specify the plugin to convert from: MULTIVERSE | MULTIINV");
+                    }
+                }
+
+                return true;
+
+            case DEBUG:
+                if (isPlayer) {
+                    if (player.hasPermission(PERMISSION_NODE + "help")) {
+
+                    }
+                    if (plugin.dreport != null) {
+                        LinkedList<String> customdata = new LinkedList<String>();
+                        customdata.add("NexusInventory Custom Data");
+                        customdata.add("================================");
+                        customdata.add("-----------config.yml-----------");
+                        BufferedReader reader = null;
+                        try {
+                            reader = new BufferedReader(new FileReader(plugin.getDataFolder() + File.separator + "config.yml"));
+                            String line = null;
+                            while ((line = reader.readLine()) != null) {
+                                if (line.startsWith("  password:")) {
+                                    line = "  password: NOTSHOWN";
+                                }
+                                customdata.add(line);
+                            }
+                        } catch (FileNotFoundException e) {
+                        } catch (IOException e) {
+                        } finally {
+                            if (reader != null) {
+                                try {
+                                    reader.close();
+                                } catch (IOException e) {
+                                }
+                                reader = null;
+                            }
+                        }
+                        customdata.add("-----------groups.yml-----------");
+                        try {
+                            reader = new BufferedReader(new FileReader(plugin.getDataFolder() + File.separator + "groups.yml"));
+                            String line = null;
+                            while ((line = reader.readLine()) != null) {
+                                customdata.add(line);
+                            }
+                        } catch (FileNotFoundException e) {
+                        } catch (IOException e) {
+                        } finally {
+                            if (reader != null) {
+                                try {
+                                    reader.close();
+                                } catch (IOException e) {
+                                }
+                            }
+                        }
+                        plugin.dreport.createReport(sender, customdata);
                     }
                 }
 
@@ -215,20 +269,21 @@ public class NexusCommand implements CommandExecutor {
         player.sendMessage(ChatColor.RED + "" + ChatColor.ITALIC + " Authors: " + ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "ExileDev, ExtendedAlpha" + ChatColor.DARK_GRAY + "]");
         player.sendMessage(ChatColor.RED + "" + ChatColor.ITALIC + " Original Authors: " + ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Gnat008" + ChatColor.DARK_GRAY + "]");
         player.sendMessage("");
-        player.sendMessage(ChatColor.GRAY + "" + ChatColor.ITALIC + " /nexusinv convert" + ChatColor.RED + "" + ChatColor.ITALIC + " - Convert data from Multiverse-Inventories or Multiinv into swi.");
+        player.sendMessage(ChatColor.GRAY + "" + ChatColor.ITALIC + " /nexusinv convert" + ChatColor.RED + "" + ChatColor.ITALIC + " - Convert data from Multiverse-Inventories or Multiinv into NexusInventory.");
         player.sendMessage(ChatColor.GRAY + "" + ChatColor.ITALIC + " /nexusinv help" + ChatColor.RED + "" + ChatColor.ITALIC + " - Displays this help page.");
         player.sendMessage(ChatColor.GRAY + "" + ChatColor.ITALIC + " /nexusinv info" + ChatColor.RED + "" + ChatColor.ITALIC + " - Displays information about the plugin authors.");
         player.sendMessage(ChatColor.GRAY + "" + ChatColor.ITALIC + " /nexusinv reload" + ChatColor.RED + "" + ChatColor.ITALIC + " - Reloads all configuration files.");
         player.sendMessage(ChatColor.GRAY + "" + ChatColor.ITALIC + " /nexusinv setworlddefault [group]" + ChatColor.RED + "" + ChatColor.ITALIC + " - Set the default inventory of the world you are standing in.");
+        player.sendMessage(ChatColor.GRAY + "" + ChatColor.ITALIC + " /nexusinv debug" + ChatColor.RED + "" + ChatColor.ITALIC + " - A simple debug command for making a error / bug reports.");
         player.sendMessage(ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "-----------------------------------------------------");
     }
 
     private void AuthorInfo(Player player) {
         player.sendMessage(ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "-----------------------------------------------------");
-        player.sendMessage(ChatColor.GRAY + " [" + ChatColor.GOLD + ChatColor.ITALIC + "PerWorldInventory project page:");
+        player.sendMessage(ChatColor.GRAY + " [" + ChatColor.GOLD + ChatColor.ITALIC + "PerWorldInventory" + ChatColor.GRAY + "]" + "project page:");
         player.sendMessage(ChatColor.GREEN + " https://goo.gl/m1zLP6");
         player.sendMessage(ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "-----------------------------------------------------");
-        player.sendMessage(ChatColor.GRAY + " [" + ChatColor.GOLD + ChatColor.ITALIC + "NexusInventory project page:");
+        player.sendMessage(ChatColor.GRAY + " [" + ChatColor.GOLD + ChatColor.ITALIC + "NexusInventory" + ChatColor.GRAY + "]" + "project page:");
         player.sendMessage(ChatColor.GREEN + " https://goo.gl/0CKb2i");
         player.sendMessage(ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "-----------------------------------------------------");
         player.sendMessage(ChatColor.GRAY + " [" + ChatColor.GOLD + ChatColor.ITALIC + ChatColor.BOLD + "Gnat008 GitHub:" + ChatColor.GRAY + "]");
