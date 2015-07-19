@@ -1,4 +1,4 @@
-package org.ExtendedAlpha.Nexus.Serialization;
+package org.ExtendedAlpha.Nexus.TacoSerialization;
 
 import org.json.JSONException;
 import org.json.JSONObject;

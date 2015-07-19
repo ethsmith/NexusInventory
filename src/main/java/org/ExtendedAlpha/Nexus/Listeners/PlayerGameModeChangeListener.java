@@ -18,7 +18,7 @@
 
 package org.ExtendedAlpha.Nexus.Listeners;
 
-import org.ExtendedAlpha.Nexus.Serialization.PlayerSerialization;
+import org.ExtendedAlpha.Nexus.TacoSerialization.PlayerSerialization;
 import org.ExtendedAlpha.Nexus.NexusInventory;
 import org.ExtendedAlpha.Nexus.Groups.Group;
 import org.bukkit.GameMode;

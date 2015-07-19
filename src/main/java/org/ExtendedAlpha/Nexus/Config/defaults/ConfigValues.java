@@ -24,6 +24,7 @@ import org.ExtendedAlpha.Nexus.Config.ConfigManager;
 public enum ConfigValues {
 
     RESET_CONFIG(true),
+    ENABLE_METRICS(true),
     CHECK_UPDATES(true),
     MANAGE_GAMEMODES(false),
     SEPARATE_GAMEMODE_INVENTORIES(true),
@@ -56,9 +57,9 @@ public enum ConfigValues {
     }
 
     public String getKey() {
-        if (this.ordinal() < 3)
+        if (this.ordinal() < 5)
             return this.toString().toLowerCase().replaceAll("_", "-");
-        else if (this.ordinal() < 7)
+        else if (this.ordinal() < 9)
             return "player." + this.toString().toLowerCase().replaceAll("_", "-");
         else
             return "player.stats." + this.toString().toLowerCase().replaceAll("_", "-");

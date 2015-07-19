@@ -1,4 +1,4 @@
-package org.ExtendedAlpha.Nexus.Serialization;
+package org.ExtendedAlpha.Nexus.TacoSerialization;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -31,7 +31,7 @@ public class InventorySerialization {
     }
 
     /**
-     * Serialization an Inventory. Note that this does not save the armor contents for a PlayerInventory.
+     * TacoSerialization an Inventory. Note that this does not save the armor contents for a PlayerInventory.
      *
      * @param inv The Inventory to serialize
      * @return A JSONArray representing the serialized Inventory.

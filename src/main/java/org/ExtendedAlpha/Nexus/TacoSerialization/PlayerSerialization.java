@@ -1,4 +1,4 @@
-package org.ExtendedAlpha.Nexus.Serialization;
+package org.ExtendedAlpha.Nexus.TacoSerialization;
 
 import org.ExtendedAlpha.Nexus.NexusInventory;
 import org.ExtendedAlpha.Nexus.Config.defaults.ConfigValues;
@@ -118,13 +118,13 @@ public class PlayerSerialization {
             if (meta.has("data-format"))
                 format = meta.getInt("data-format");
 
-            if (meta.has("ender-chest"))
+            if (ConfigValues.ENDER_CHEST.getBoolean() && meta.has("ender-chest"))
                 InventorySerialization.setInventory(player.getEnderChest(), meta.getJSONArray("ender-chest"), format);
-            if (meta.has("inventory"))
+            if (ConfigValues.INVENTORY.getBoolean() && meta.has("inventory"))
                 InventorySerialization.setPlayerInventory(player, meta.getJSONObject("inventory"), format);
-            if (meta.has("stats"))
+            if (ConfigValues.STATS.getBoolean() && meta.has("stats"))
                 PlayerStatsSerialization.applyPlayerStats(player, meta.getJSONObject("stats"));
-            if (meta.has("economy"))
+            if (ConfigValues.ECONOMY.getBoolean() && meta.has("economy"))
                 EconomySerialization.setEconomy(plugin.getEconomy(), meta.getJSONObject("economy"), player);
         } catch (JSONException e) {
             e.printStackTrace();

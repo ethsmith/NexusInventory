@@ -1,4 +1,4 @@
-package org.ExtendedAlpha.Nexus.Serialization;
+package org.ExtendedAlpha.Nexus.TacoSerialization;
 
 import org.bukkit.DyeColor;
 import org.bukkit.Material;

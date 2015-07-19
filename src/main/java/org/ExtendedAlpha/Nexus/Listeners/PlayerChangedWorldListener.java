@@ -22,7 +22,7 @@ import org.ExtendedAlpha.Nexus.Config.defaults.ConfigValues;
 import org.ExtendedAlpha.Nexus.Groups.Group;
 import org.ExtendedAlpha.Nexus.Groups.GroupManager;
 import org.ExtendedAlpha.Nexus.NexusInventory;
-import org.ExtendedAlpha.Nexus.Serialization.PlayerSerialization;
+import org.ExtendedAlpha.Nexus.TacoSerialization.PlayerSerialization;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

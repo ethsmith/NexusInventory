@@ -20,8 +20,8 @@ package org.ExtendedAlpha.Nexus.Commands;
 
 import org.ExtendedAlpha.Nexus.Groups.Group;
 import org.ExtendedAlpha.Nexus.NexusInventory;
-import org.ExtendedAlpha.Nexus.Serialization.PlayerSerialization;
-import org.ExtendedAlpha.Nexus.Serialization.Serializer;
+import org.ExtendedAlpha.Nexus.TacoSerialization.PlayerSerialization;
+import org.ExtendedAlpha.Nexus.TacoSerialization.Serializer;
 import org.ExtendedAlpha.Nexus.Utils.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -34,8 +34,6 @@ import java.io.*;
 import java.util.LinkedList;
 
 public class NexusCommand implements CommandExecutor {
-
-    private enum Commands {CONVERT, HELP, RELOAD, SETWORLDDEFAULT, INFO, DEBUG}
 
     private NexusInventory plugin;
 
@@ -55,9 +53,9 @@ public class NexusCommand implements CommandExecutor {
             player = (Player) sender;
         }
 
-        Commands command;
+        NICommands command;
         try {
-            command = Commands.valueOf(args[0].toUpperCase());
+            command = NICommands.valueOf(args[0].toUpperCase());
         } catch (ArrayIndexOutOfBoundsException | IllegalArgumentException ex) {
             if (isPlayer) {
                 plugin.getPlayerMessenger().sendMessage((Player) sender, "Not a valid command. Please type /nexusinv help for help.");

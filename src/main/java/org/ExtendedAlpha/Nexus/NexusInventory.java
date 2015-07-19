@@ -144,13 +144,16 @@ public class NexusInventory extends JavaPlugin {
     }
 
     private void setupMetrics() {
-        try {
-            Metrics metrics = new Metrics(this);
-            metrics.start();
-        } catch (IOException e) {
-            log.warning("Couldn't submit metrics stats: " + e.getMessage());
+            if (ConfigValues.ENABLE_METRICS.getBoolean()) {
+                getLogger().info("Starting metrics...");
+                try {
+                    Metrics metrics = new Metrics(this);
+                    metrics.start();
+                } catch (IOException e) {
+                    getLogger().info("Failed to start metrics!");
+                }
+            }
         }
-    }
 
     public static NexusInventory getInstance() {
         if (instance == null) {

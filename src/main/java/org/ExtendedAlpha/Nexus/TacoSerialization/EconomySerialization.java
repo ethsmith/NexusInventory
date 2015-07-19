@@ -15,7 +15,7 @@
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.ExtendedAlpha.Nexus.Serialization;
+package org.ExtendedAlpha.Nexus.TacoSerialization;
 
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.entity.Player;

@@ -6,7 +6,7 @@
 
     <groupId>org.ExtendedAlpha.Nexus</groupId>
     <artifactId>NexusInventory</artifactId>
-    <version>3.1.0</version>
+    <version>3.2.0</version>
     
     <name>NexusInventory</name>
     <description>The multiverse inventories replacement</description>

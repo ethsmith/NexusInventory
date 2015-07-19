@@ -324,7 +324,7 @@ public class Metrics {
         File pluginsFolder = plugin.getDataFolder().getParentFile();
 
         // return => base/plugins/PluginMetrics/config.yml
-        return new File(new File(pluginsFolder, "/NexusInventory/Metrics"), "config.yml");
+        return new File(new File(pluginsFolder, "Metrics"), "config.yml");
     }
 
     /**

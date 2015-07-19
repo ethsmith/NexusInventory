@@ -18,8 +18,9 @@
 
 package org.ExtendedAlpha.Nexus.Data;
 
-import org.ExtendedAlpha.Nexus.Serialization.InventorySerialization;
-import org.ExtendedAlpha.Nexus.Serialization.PotionEffectSerialization;
+import org.ExtendedAlpha.Nexus.Groups.Group;
+import org.ExtendedAlpha.Nexus.TacoSerialization.InventorySerialization;
+import org.ExtendedAlpha.Nexus.TacoSerialization.PotionEffectSerialization;
 import com.onarandombox.multiverseinventories.MultiverseInventories;
 import com.onarandombox.multiverseinventories.ProfileTypes;
 import com.onarandombox.multiverseinventories.api.profile.PlayerProfile;
@@ -36,6 +37,7 @@ import org.bukkit.potion.PotionEffect;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import uk.co.tggl.pluckerpluck.multiinv.MultiInv;
+import uk.co.tggl.pluckerpluck.multiinv.MultiInvAPI;
 import uk.co.tggl.pluckerpluck.multiinv.api.MIAPIPlayer;
 import uk.co.tggl.pluckerpluck.multiinv.inventory.MIItemStack;
 
@@ -67,62 +69,106 @@ public class DataConverter {
     }
 
     public void convertMultiVerseData() {
-        NexusInventory.log.info("Beginning data conversion. This may take awhile...");
+        plugin.getLogger().info("Beginning data conversion. This may take awhile...");
         MultiverseInventories mvinventories = (MultiverseInventories) plugin.getServer().getPluginManager().getPlugin("Multiverse-Inventories");
         List<WorldGroupProfile> mvgroups = mvinventories.getGroupManager().getGroups();
 
         for (WorldGroupProfile mvgroup : mvgroups) {
             for (OfflinePlayer player1 : Bukkit.getOfflinePlayers()) {
                 try {
-                    PlayerProfile playerData = mvgroup.getPlayerData(ProfileTypes.SURVIVAL, player1);
-                    if (playerData != null) {
-                        JSONObject writable = serializeMVIToNewFormat(playerData);
-                        plugin.getSerializer().writePlayerDataToFile(player1, writable, plugin.getGroupManager().getGroup(mvgroup.getName()), GameMode.SURVIVAL);
+                    for (GameMode gamemode : GameMode.values()) {
+                        PlayerProfile playerData = null;
+                        switch (gamemode) {
+                            case SURVIVAL:
+                                playerData = mvgroup.getPlayerData(ProfileTypes.SURVIVAL, player1);
+                                break;
+                            case ADVENTURE:
+                                playerData = mvgroup.getPlayerData(ProfileTypes.ADVENTURE, player1);
+                                break;
+                            case SPECTATOR:
+                            case CREATIVE:
+                                playerData = mvgroup.getPlayerData(ProfileTypes.CREATIVE, player1);
+                                break;
+                        }
+
+                        if (playerData != null) {
+                            JSONObject writable = serializeMVIToNewFormat(playerData);
+                            Group group = plugin.getGroupManager().getGroup(mvgroup.getName());
+                            if (group == null) {
+                                group = new Group(mvgroup.getName(), null, null);
+                            }
+                            plugin.getSerializer().writePlayerDataToFile(player1, writable, group, gamemode);
+                        }
                     }
                 } catch (Exception ex) {
-                    NexusInventory.log.info("Error importing inventory for player: " + player1.getName() +
-                            " For group: " + mvgroup.getName());
-                    ex.printStackTrace();
+                    plugin.getLogger().warning("Error importing inventory for player '" + player1.getName() +
+                            "' for group '" + mvgroup.getName() + "': " + ex.getMessage());
                 }
             }
         }
 
-        NexusInventory.log.info("Data conversion complete! Disabling Multiverse-Inventories...");
+        plugin.getLogger().info("Data conversion complete! Disabling Multiverse-Inventories...");
         plugin.getServer().getPluginManager().disablePlugin(mvinventories);
-        NexusInventory.log.info("Multiverse-Inventories disabled! Don't forget to remove the .jar!");
+        plugin.getLogger().info("Multiverse-Inventories disabled! Don't forget to remove the .jar!");
     }
 
     public void convertMultiInvData() {
-        NexusInventory.log.info("Beginning data conversion. This may take awhile...");
+        plugin.getLogger().info("Beginning data conversion. This may take awhile...");
         MultiInv multiinv = (MultiInv) plugin.getServer().getPluginManager().getPlugin("MultiInv");
-        /*MultiInvAPI mvAPI = new MultiInvAPI(multiinv);
+       /* MultiInvAPI mvAPI = new MultiInvAPI(multiinv);
 
-        for (String world : mvAPI.getGroups().values()) {
-            System.out.println("World: " + world);
+        for (String groupName : mvAPI.getGroups().values()) {
             for (OfflinePlayer offlinePlayer : Bukkit.getOfflinePlayers()) {
-                System.out.println("OfflinePlayer: " + offlinePlayer.getName());
-                MIAPIPlayer player = mvAPI.getPlayerInstance(offlinePlayer, world, GameMode.SURVIVAL);
-                if (player != null && player.getInventory() != null && player.getInventory().getInventoryContents() != null) {
-                    System.out.println("MIAPIPlayer: " + player.getPlayername());
-                    try {
-                        plugin.getSerializer().writePlayerDataToFile(offlinePlayer, serializeMIToNewFormat(player), mvAPI.getGroups().get(world), GameMode.SURVIVAL);
-                    } catch (Exception ex) {
-                        plugin.getPlayerMessenger().printToConsole("Error importing inventory for player '" + offlinePlayer.getName() + ": " + ex.getMessage());
-                        ex.printStackTrace();
+                try {
+                    for (GameMode gamemode : GameMode.values()) {
+                        MIAPIPlayer player = null;
+                        switch (gamemode) {
+                            case SURVIVAL:
+                                player = mvAPI.getPlayerInstance(offlinePlayer, groupName, gamemode);
+                                break;
+                            case ADVENTURE:
+                                player = mvAPI.getPlayerInstance(offlinePlayer, groupName, gamemode);
+                                break;
+                            case SPECTATOR:
+                            case CREATIVE:
+                                player = mvAPI.getPlayerInstance(offlinePlayer, groupName, GameMode.CREATIVE);
+                                break;
+                        }
+
+                        if (player != null) {
+                            Group group = plugin.getGroupManager().getGroup(groupName);
+                            if (group == null) {
+                                group = new Group(groupName, null, null);
+                            }
+
+                            plugin.getSerializer().writePlayerDataToFile(
+                                    offlinePlayer,
+                                    serializeMIToNewFormat(player),
+                                    group,
+                                    gamemode);
+                        }
                     }
+                } catch (Exception ex) {
+                    plugin.getLogger().warning("Error importing inventory for player '" + offlinePlayer.getName() +
+                            "' for group '" + groupName + "': " + ex.getMessage());
                 }
             }
         }*/
 
-        NexusInventory.log.info("Data conversion complete! Disabling MultiInv...");
+        plugin.getLogger().info("Data conversion complete! Disabling MultiInv...");
         plugin.getServer().getPluginManager().disablePlugin(multiinv);
-        NexusInventory.log.info("MultiInv disabled! Don't forget to remove the .jar!");
+        plugin.getLogger().info("MultiInv disabled! Don't forget to remove the .jar!");
     }
 
     private JSONObject serializeMVIToNewFormat(PlayerProfile data) {
         JSONObject root = new JSONObject();
+        root.put("data-format", 1);
 
         JSONObject inv = new JSONObject();
+        if (data.get(Sharables.ENDER_CHEST) != null) {
+            JSONArray enderchest = InventorySerialization.serializeInventory(data.get(Sharables.ENDER_CHEST));
+            root.put("ender-chest", enderchest);
+        }
         if (data.get(Sharables.INVENTORY) != null) {
             JSONArray inventory = InventorySerialization.serializeInventory(data.get(Sharables.INVENTORY));
             inv.put("inventory", inventory);
@@ -154,6 +200,12 @@ public class DataConverter {
         if (data.get(Sharables.SATURATION) != null)
             stats.put("saturation", data.get(Sharables.SATURATION));
 
+        if (data.get(Sharables.ECONOMY) != null) {
+            JSONObject econ = new JSONObject();
+            econ.put("balance", data.get(Sharables.ECONOMY));
+            root.put("economy", econ);
+        }
+
         root.put("inventory", inv);
         root.put("stats", stats);
 
@@ -162,6 +214,22 @@ public class DataConverter {
 
     private JSONObject serializeMIToNewFormat(MIAPIPlayer player) {
         JSONObject root = new JSONObject();
+        root.put("data-format", 1);
+
+        if (player.getEnderchest() != null) {
+            JSONArray enderChest = new JSONArray();
+            List<ItemStack> items = new ArrayList<>();
+            for (MIItemStack item : player.getEnderchest().getInventoryContents()) {
+                if (item == null || item.getItemStack() == null) {
+                    items.add(new ItemStack(Material.AIR));
+                } else {
+                    items.add(item.getItemStack());
+                }
+            }
+            enderChest.put(InventorySerialization.serializeInventory((ItemStack[]) items.toArray()));
+            root.put("ender-chest", enderChest);
+        }
+
         JSONObject inventory = new JSONObject();
 
         List<ItemStack> items = new ArrayList<>();
@@ -172,9 +240,7 @@ public class DataConverter {
                 items.add(item.getItemStack());
             }
         }
-        ItemStack[] invArray = new ItemStack[items.size()];
-        invArray = items.toArray(invArray);
-        JSONArray inv = InventorySerialization.serializeInventory(invArray);
+        JSONArray inv = InventorySerialization.serializeInventory((ItemStack[]) items.toArray());
         inventory.put("inventory", inv);
 
         List<ItemStack> armorList = new ArrayList<>();
@@ -185,37 +251,16 @@ public class DataConverter {
                 armorList.add(item.getItemStack());
             }
         }
-        ItemStack[] armorArray = new ItemStack[armorList.size()];
-        armorArray = armorList.toArray(armorArray);
-        JSONArray armor = InventorySerialization.serializeInventory(armorArray);
+        JSONArray armor = InventorySerialization.serializeInventory((ItemStack[]) armorList.toArray());
         inventory.put("armor", armor);
 
-        List<ItemStack> enderChestList = new ArrayList<>();
-        for (MIItemStack item : player.getEnderchest().getInventoryContents()) {
-            if (item == null || item.getItemStack() == null) {
-                items.add(new ItemStack(Material.AIR));
-            } else {
-                enderChestList.add(item.getItemStack());
-            }
-        }
-        ItemStack[] endArray = new ItemStack[enderChestList.size()];
-        endArray = enderChestList.toArray(endArray);
-        JSONArray enderChest = InventorySerialization.serializeInventory(endArray);
-        root.put("ender-chest", enderChest);
-
         JSONObject stats = new JSONObject();
-        if (ConfigValues.EXP.getBoolean())
-            stats.put("exp", player.getXp());
-        if (ConfigValues.FOOD.getBoolean())
-            stats.put("food", player.getFoodlevel());
-        if (ConfigValues.GAMEMODE.getBoolean())
-            stats.put("gamemode", player.getGm().toString());
-        if (ConfigValues.HEALTH.getBoolean())
-            stats.put("health", player.getHealth());
-        if (ConfigValues.LEVEL.getBoolean())
-            stats.put("level", player.getXpLevel());
-        if (ConfigValues.SATURATION.getBoolean())
-            stats.put("saturation", player.getSaturation());
+        stats.put("exp", player.getXp());
+        stats.put("food", player.getFoodlevel());
+        stats.put("gamemode", player.getGm().toString());
+        stats.put("health", player.getHealth());
+        stats.put("level", player.getXpLevel());
+        stats.put("saturation", player.getSaturation());
 
         root.put("inventory", inventory);
         root.put("stats", stats);

@@ -20,8 +20,8 @@ package org.ExtendedAlpha.Nexus.Data;
 
 import org.ExtendedAlpha.Nexus.Groups.Group;
 import org.ExtendedAlpha.Nexus.NexusInventory;
-import org.ExtendedAlpha.Nexus.Serialization.PlayerSerialization;
-import org.ExtendedAlpha.Nexus.Serialization.Serializer;
+import org.ExtendedAlpha.Nexus.TacoSerialization.PlayerSerialization;
+import org.ExtendedAlpha.Nexus.TacoSerialization.Serializer;
 import org.bukkit.GameMode;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
