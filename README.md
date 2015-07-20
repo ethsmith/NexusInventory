@@ -12,7 +12,7 @@ Dev-Builds (Jenkins) can be found here: http://ci.md-5.net/job/NexusInventory/
 
 CircleCi status: [![Circle CI](https://circleci.com/gh/ExtendedAlpha/NexusInventory.svg?style=svg)](https://circleci.com/gh/ExtendedAlpha/NexusInventory)
 
-Gitter ChatRoom: [![Gitter Chat](https://img.shields.io/badge/GITTER-JOIN_CHAT_%E2%86%92-1dce73.svg)](https://gitter.im/ExileDev/ExtendedAlpha)
+GitterChat room: [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ExileDev/ExtendedAlpha?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)
 
 MCStats (metrics): <br />
 <a href="http://mcstats.org/plugin/NexusInventory" target="_blank" class="externalLink" rel="nofollow"><img src="http://i.mcstats.org/NexusInventory/Global+Statistics.png" class="bbCodeImage LbImage" alt="[&#8203;IMG]" data-url="http://i.mcstats.org/NexusInventory/Global+Statistics.png"></a>
