@@ -23,12 +23,12 @@
     
     <ciManagement>
         <system>jenkins</system>
-        <url>http://ci.md-5.net/job/SeparateWorldItems/</url>
+        <url>http://ci.md-5.net/job/NexusInventory/</url>
     </ciManagement>
     
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/ExtendedAlpha/SeparateWorldItems/issues</url>
+        <url>https://github.com/ExtendedAlpha/NexusInventory/issues</url>
     </issueManagement>
     
     <distributionManagement>
@@ -93,7 +93,7 @@
             <artifactId>MultiInv</artifactId>
             <version>3.3.5</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/Library/MultiInv-3.3.5.jar</systemPath>
+            <systemPath>${project.basedir}/Dependencies/MultiInv-3.3.5.jar</systemPath>
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -101,7 +101,7 @@
             <artifactId>DebugReport</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/Library/DebugReport-1.0.jar</systemPath>
+            <systemPath>${project.basedir}/Dependencies/DebugReport-1.0.jar</systemPath>
             <optional>true</optional>
         </dependency>
     </dependencies>
@@ -136,7 +136,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>2.2</version>
+                <version>2.3</version>
                 <configuration>
                     <createDependencyReducedPom>false</createDependencyReducedPom>
                     <artifactSet>

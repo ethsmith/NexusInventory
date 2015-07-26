@@ -88,6 +88,13 @@ public class NexusInventory extends JavaPlugin {
             log.info("Initializing PlayerGameModeChangeListener.");
         }
 
+        if (getServer().getPluginManager().getPlugin("DebugReport") != null) {
+            log.info("DebugReport found! Hooking into it...");
+            dreport = DebugReport.getInstance();
+        } else {
+            log.warning("Unable to hook into DebugReport!");
+        }
+
         if (getServer().getPluginManager().getPlugin("Vault") != null) {
             log.info("Vault found! Hooking into it...");
             RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
@@ -98,23 +105,13 @@ public class NexusInventory extends JavaPlugin {
                 log.warning("Unable to hook into Vault!");
             }
         }
-
-        if (getServer().getPluginManager().getPlugin("DebugReport") != null) {
-            log.info("DebugReport found! Hooking into it...");
-            dreport = DebugReport.getInstance();
-            } else {
-                log.warning("Unable to hook into DebugReport!");
-            }
-
+        if (getConfig().getBoolean("CHECK_UPDATES"));
         {
-
-        }
-        if (getConfig().getBoolean("CHECK_UPDATES")) {
-
-            log.info("Initializing updater...");
-            this.updater = new SpigotUpdater(this);
-            getUpdater().checkUpdates();
-            if (SpigotUpdater.updateAvailable()) {
+        log.info("Initializing updater...");
+        this.updater = new SpigotUpdater(this);
+        getUpdater().checkUpdates();
+        if (SpigotUpdater.updateAvailable())
+        {
                 Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GRAY + "---------------------------------");
                 Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "           NexusInventory Updater");
                 Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + " ");
@@ -127,7 +124,6 @@ public class NexusInventory extends JavaPlugin {
                 Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GRAY + "---------------------------------");
             }
         }
-
         log.info("Initializing Metrics..");
         setupMetrics();
         log.info("Enabled!");
