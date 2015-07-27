@@ -17,7 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
-        <bukkitVersion>1.8.7-R0.1-SNAPSHOT</bukkitVersion>
+        <spigotVersion>1.8.8-R0.1-SNAPSHOT</spigotVersion>
         <mainClass>${project.groupId}.${project.artifactId}</mainClass>
     </properties>
     
@@ -52,16 +52,8 @@
             <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
         </repository>
         <repository>
-            <id>multiinv</id>
-            <url>https://github.com/ExileDev/Nexus-Repository/raw/master/uk/co/tggl/pluckerpluck/multiinv/3.3.5-SNAPSHOT/MultiInv-3.3.5.jar?raw=true</url>
-        </repository>
-        <repository>
             <id>vault-repo</id>
             <url>http://nexus.theyeticave.net/content/repositories/pub_releases</url>
-        </repository>
-        <repository>
-            <id>local-repo</id>
-            <url>${project.basedir}/Library/</url>
         </repository>
     </repositories>
 
@@ -77,9 +69,9 @@
             <version>1.5</version>
         </dependency>
         <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
-            <version>${bukkitVersion}</version>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>${spigotVersion}</version>
         </dependency>
         <dependency>
             <groupId>com.onarandombox.multiverseinventories</groupId>
@@ -120,6 +112,15 @@
                     <include>**</include>
                     <include>plugin.yml</include>
                     <include>simpleplayerdata.json</include>
+                </includes>
+            </resource>
+            <resource>
+                <targetPath>.</targetPath>
+                <filtering>true</filtering>
+                <directory>${project.basedir}</directory>
+                <includes>
+                    <include>LICENSE</include>
+                    <include>README.md</include>
                 </includes>
             </resource>
         </resources>
