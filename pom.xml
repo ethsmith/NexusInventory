@@ -105,9 +105,6 @@
                 <filtering>true</filtering>
                 <directory>${basedir}/src/main/resources/</directory>
                 <includes>
-                    <include>LICENSE</include>
-                    <include>README.md</include>
-                    <include>**</include>
                     <include>plugin.yml</include>
                     <include>simpleplayerdata.json</include>
                 </includes>
