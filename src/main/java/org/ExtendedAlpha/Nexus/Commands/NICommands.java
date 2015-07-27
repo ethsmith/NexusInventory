@@ -5,6 +5,5 @@ public enum NICommands {
     HELP,
     RELOAD,
     SETWORLDDEFAULT,
-    INFO,
     DEBUG
 }

@@ -178,17 +178,6 @@ public class NexusCommand implements CommandExecutor {
 
                 return true;
 
-            case INFO:
-                if (isPlayer) {
-                    if (player.hasPermission(PERMISSION_NODE + "info")) {
-                        AuthorInfo(player);
-                    } else {
-                        plugin.getPlayerMessenger().sendMessage(player, NO_PERMISSION);
-                    }
-                }
-
-                return true;
-
             case RELOAD:
                 if (isPlayer) {
                     if (player.hasPermission(PERMISSION_NODE + "reload")) {
@@ -270,25 +259,9 @@ public class NexusCommand implements CommandExecutor {
         player.sendMessage("");
         player.sendMessage(ChatColor.GRAY + "" + ChatColor.ITALIC + " /nexusinv convert" + ChatColor.RED + "" + ChatColor.ITALIC + " - Convert data from Multiverse-Inventories or Multiinv into NexusInventory.");
         player.sendMessage(ChatColor.GRAY + "" + ChatColor.ITALIC + " /nexusinv help" + ChatColor.RED + "" + ChatColor.ITALIC + " - Displays this help page.");
-        player.sendMessage(ChatColor.GRAY + "" + ChatColor.ITALIC + " /nexusinv info" + ChatColor.RED + "" + ChatColor.ITALIC + " - Displays information about the plugin authors.");
         player.sendMessage(ChatColor.GRAY + "" + ChatColor.ITALIC + " /nexusinv reload" + ChatColor.RED + "" + ChatColor.ITALIC + " - Reloads all configuration files.");
         player.sendMessage(ChatColor.GRAY + "" + ChatColor.ITALIC + " /nexusinv setworlddefault [group]" + ChatColor.RED + "" + ChatColor.ITALIC + " - Set the default inventory of the world you are standing in.");
         player.sendMessage(ChatColor.GRAY + "" + ChatColor.ITALIC + " /nexusinv debug" + ChatColor.RED + "" + ChatColor.ITALIC + " - A simple debug command for making a error / bug reports.");
-        player.sendMessage(ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "-----------------------------------------------------");
-    }
-
-    private void AuthorInfo(Player player) {
-        player.sendMessage(ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "-----------------------------------------------------");
-        player.sendMessage(ChatColor.GRAY + " [" + ChatColor.GOLD + ChatColor.ITALIC + "PerWorldInventory" + ChatColor.GRAY + "]" + "project page:");
-        player.sendMessage(ChatColor.GREEN + " https://goo.gl/m1zLP6");
-        player.sendMessage(ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "-----------------------------------------------------");
-        player.sendMessage(ChatColor.GRAY + " [" + ChatColor.GOLD + ChatColor.ITALIC + "NexusInventory" + ChatColor.GRAY + "]" + "project page:");
-        player.sendMessage(ChatColor.GREEN + " https://goo.gl/0CKb2i");
-        player.sendMessage(ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "-----------------------------------------------------");
-        player.sendMessage(ChatColor.GRAY + " [" + ChatColor.GOLD + ChatColor.ITALIC + ChatColor.BOLD + "Gnat008 GitHub:" + ChatColor.GRAY + "]");
-        player.sendMessage(ChatColor.GREEN + " https://github.com/Gnat008");
-        player.sendMessage(ChatColor.GRAY + " [" + ChatColor.GOLD + ChatColor.ITALIC + ChatColor.BOLD + "ExileDev GitHub:" + ChatColor.GRAY + "]");
-        player.sendMessage(ChatColor.GREEN + " https://github.com/ExileDev");
         player.sendMessage(ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "-----------------------------------------------------");
     }
 
