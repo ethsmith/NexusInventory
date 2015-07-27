@@ -81,7 +81,7 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>uk.co</groupId>
+            <groupId>uk.co.pluckerpluck.multiinv</groupId>
             <artifactId>MultiInv</artifactId>
             <version>3.3.5</version>
             <scope>system</scope>
