@@ -30,7 +30,6 @@ import org.ExtendedAlpha.Nexus.Listeners.PlayerChangedWorldListener;
 import org.ExtendedAlpha.Nexus.Listeners.PlayerGameModeChangeListener;
 import org.ExtendedAlpha.Nexus.Listeners.PlayerQuitListener;
 import org.ExtendedAlpha.Nexus.Logger.NexusLogger;
-import org.ExtendedAlpha.Nexus.Metrics.Metrics;
 import org.ExtendedAlpha.Nexus.Updater.SpigotUpdater;
 import org.ExtendedAlpha.Nexus.Utils.ChatColor;
 import org.ExtendedAlpha.Nexus.Utils.PlayerMessenger;
@@ -38,6 +37,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import com.tux2mc.debugreport.DebugReport;
+import org.mcstats.multiverse.Metrics;
 
 import java.io.*;
 

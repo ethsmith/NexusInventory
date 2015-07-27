@@ -44,6 +44,10 @@
 
     <repositories>
         <repository>
+            <id>Plugin Metrics</id>
+            <url>http://repo.mcstats.org/content/repositories/public</url>
+        </repository>
+        <repository>
             <id>onarandombox</id>
             <url>http://repo.onarandombox.com/content/groups/public</url>
         </repository>
@@ -83,6 +87,22 @@
             <version>2.5</version>
             <type>jar</type>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mcstats.bukkit</groupId>
+            <artifactId>metrics</artifactId>
+            <version>R7</version>
+            <scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.bukkit</groupId>
+                    <artifactId>bukkit</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.bukkit</groupId>
+                    <artifactId>craftbukkit</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>uk.co</groupId>
@@ -142,12 +162,17 @@
                     <artifactSet>
                         <includes>
                             <include>org.json</include>
+                            <include>org.mcstats.*:*</include>
                         </includes>
                     </artifactSet>
                     <relocations>
                         <relocation>
                             <pattern>org.json</pattern>
-                            <shadedPattern>com.ExtendedAlpha.org.json</shadedPattern>
+                            <shadedPattern>org.ExtendedAlpha.libs.json</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>org.mcstats</pattern>
+                            <shadedPattern>org.ExtendedAlpha.libs.mcstats</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>
