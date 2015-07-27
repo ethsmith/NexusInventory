@@ -114,7 +114,7 @@ public class NexusCommand implements CommandExecutor {
 
             case DEBUG:
                 if (isPlayer) {
-                    if (player.hasPermission(PERMISSION_NODE + "help")) {
+                    if (player.hasPermission(PERMISSION_NODE + "debug")) {
 
                     }
                     if (plugin.dreport != null) {
