@@ -6,7 +6,7 @@
 
     <groupId>org.ExtendedAlpha.Nexus</groupId>
     <artifactId>NexusInventory</artifactId>
-    <version>3.2.0</version>
+    <version>3.2.1</version>
     
     <name>NexusInventory</name>
     <description>The multiverse inventories replacement</description>
@@ -89,22 +89,6 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.mcstats.bukkit</groupId>
-            <artifactId>metrics</artifactId>
-            <version>R7</version>
-            <scope>compile</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.bukkit</groupId>
-                    <artifactId>bukkit</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.bukkit</groupId>
-                    <artifactId>craftbukkit</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
             <groupId>uk.co</groupId>
             <artifactId>MultiInv</artifactId>
             <version>3.3.5</version>
@@ -169,10 +153,6 @@
                         <relocation>
                             <pattern>org.json</pattern>
                             <shadedPattern>org.ExtendedAlpha.libs.json</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>org.mcstats</pattern>
-                            <shadedPattern>org.ExtendedAlpha.libs.mcstats</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>
