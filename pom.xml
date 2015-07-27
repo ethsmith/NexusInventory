@@ -111,19 +111,11 @@
                 <filtering>true</filtering>
                 <directory>${basedir}/src/main/resources/</directory>
                 <includes>
-                    <include>**</include>
-                    <include>plugin.yml</include>
-                    <include>simpleplayerdata.json</include>
-                </includes>
-            </resource>
-            <resource>
-                <targetPath>.</targetPath>
-                <filtering>true</filtering>
-                <directory>${project.basedir}</directory>
-                <includes>
                     <include>LICENSE</include>
                     <include>README.md</include>
                     <include>**</include>
+                    <include>plugin.yml</include>
+                    <include>simpleplayerdata.json</include>
                 </includes>
             </resource>
         </resources>
@@ -131,7 +123,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3</version>
+                <version>3.2</version>
                 <configuration>
                     <source>1.7</source>
                     <target>1.7</target>
