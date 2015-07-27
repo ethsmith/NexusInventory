@@ -81,12 +81,11 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>uk.co.pluckerpluck.multiinv</groupId>
+            <groupId>uk.co</groupId>
             <artifactId>MultiInv</artifactId>
             <version>3.3.5</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/Dependencies/MultiInv-3.3.5.jar</systemPath>
-            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>com.tux2mc.debugreport</groupId>
@@ -94,7 +93,6 @@
             <version>1.0</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/Dependencies/DebugReport-1.0.jar</systemPath>
-            <optional>true</optional>
         </dependency>
     </dependencies>
 
