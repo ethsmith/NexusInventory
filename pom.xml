@@ -48,6 +48,10 @@
             <url>http://repo.onarandombox.com/content/groups/public</url>
         </repository>
         <repository>
+            <id>multiinv</id>
+            <url>https://github.com/ExileDev/Nexus-Repository/raw/master/uk/co/tggl/pluckerpluck/multiinv/3.3.5-SNAPSHOT/MultiInv-3.3.5.jar?raw=true</url>
+        </repository>
+        <repository>
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
         </repository>
