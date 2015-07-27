@@ -307,7 +307,7 @@ public class NexusCommand implements CommandExecutor {
         plugin.getSerializer().writeData(file, Serializer.toString(PlayerSerialization.serializePlayer(player, plugin)));
 
         plugin.getSerializer().getPlayerDataFromFile(player, new Group("tmp", null, null), GameMode.SURVIVAL);
-        tmp.deleteOnExit();
+        tmp.delete();
         plugin.getPlayerMessenger().sendMessage(player, "Defaults for '" + group.getName() + "' set!");
     }
 }
